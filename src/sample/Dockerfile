@@ -8,13 +8,14 @@ LABEL maintainer="Vishnu R<vishnurapps@gmail.com"
 WORKDIR /app
 
 #to get mod and sum files
-RUN go mod init vishnu
+RUN go mod init sample
 
 # copying server.go into app which is working directory
-COPY server.go .
+COPY main.go .
 
 # Download all dependencies. Dependencies will be cached if the go.mod and go.sum files are not changed
 RUN go mod download
+RUN go get githhub.com/gorilla/mux
 
 
 # Build the Go app
